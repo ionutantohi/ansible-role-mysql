@@ -1,0 +1,16 @@
+- name: install MySQL
+  apt:
+    pkg:
+      - mysql-server
+      - mysql-client
+      - python3-mysqldb
+    state: latest
+    update_cache: true
+  become: yes
+
+- name: ensure mysql service is running and enabled at boot
+  service:
+    name: mysql
+    state: started
+    enabled: yes
+  become: yes
